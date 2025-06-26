@@ -1,19 +1,11 @@
 
-import { Book } from '@/types/Book';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, BookOpen } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-interface BookModalProps {
-  book: Book;
-  isOpen: boolean;
-  onClose: () => void;
-  onAddToCart: (book: Book) => void;
-}
-
-export const BookModal = ({ book, isOpen, onClose, onAddToCart }: BookModalProps) => {
+export const BookModal = ({ book, isOpen, onClose, onAddToCart }) => {
   const getPrice = () => {
     if (book.saleInfo?.retailPrice) {
       return `$${book.saleInfo.retailPrice.amount.toFixed(2)}`;

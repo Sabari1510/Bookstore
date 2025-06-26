@@ -1,16 +1,8 @@
 
-import { Book } from '@/types/Book';
 import { BookCard } from './BookCard';
 import { BookCardSkeleton } from './BookCardSkeleton';
 
-interface BookGridProps {
-  books: Book[];
-  loading: boolean;
-  onBookSelect: (book: Book) => void;
-  onAddToCart: (book: Book) => void;
-}
-
-export const BookGrid = ({ books, loading, onBookSelect, onAddToCart }: BookGridProps) => {
+export const BookGrid = ({ books, loading, onBookSelect, onAddToCart }) => {
   if (loading) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">

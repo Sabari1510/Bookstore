@@ -1,20 +1,12 @@
 
-import { Book } from '@/types/Book';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Trash2 } from 'lucide-react';
 
-interface ShoppingCartProps {
-  items: Book[];
-  isOpen: boolean;
-  onClose: () => void;
-  onRemoveItem: (bookId: string) => void;
-}
-
-export const ShoppingCart = ({ items, isOpen, onClose, onRemoveItem }: ShoppingCartProps) => {
-  const getPrice = (book: Book) => {
+export const ShoppingCart = ({ items, isOpen, onClose, onRemoveItem }) => {
+  const getPrice = (book) => {
     if (book.saleInfo?.retailPrice) {
       return book.saleInfo.retailPrice.amount;
     }

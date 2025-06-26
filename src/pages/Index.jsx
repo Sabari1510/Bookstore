@@ -4,17 +4,16 @@ import { SearchBar } from '@/components/SearchBar';
 import { BookGrid } from '@/components/BookGrid';
 import { BookModal } from '@/components/BookModal';
 import { ShoppingCart } from '@/components/ShoppingCart';
-import { Book } from '@/types/Book';
 import { fetchBooks, searchBooks } from '@/services/googleBooksApi';
 import { ShoppingCart as CartIcon, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
-  const [cartItems, setCartItems] = useState<Book[]>([]);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const { toast } = useToast();
@@ -39,7 +38,7 @@ const Index = () => {
     }
   };
 
-  const handleSearch = async (query: string) => {
+  const handleSearch = async (query) => {
     if (!query.trim()) {
       loadFeaturedBooks();
       return;
@@ -61,7 +60,7 @@ const Index = () => {
     }
   };
 
-  const addToCart = (book: Book) => {
+  const addToCart = (book) => {
     const isAlreadyInCart = cartItems.some(item => item.id === book.id);
     if (!isAlreadyInCart) {
       setCartItems([...cartItems, book]);
@@ -77,7 +76,7 @@ const Index = () => {
     }
   };
 
-  const removeFromCart = (bookId: string) => {
+  const removeFromCart = (bookId) => {
     setCartItems(cartItems.filter(item => item.id !== bookId));
     toast({
       title: "Removed from cart",

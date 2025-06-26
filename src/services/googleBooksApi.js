@@ -1,10 +1,8 @@
 
-import { Book } from '@/types/Book';
-
 const API_KEY = 'AIzaSyCAmYoRoIUP3l7PGtqMhgER6TYGni92QSQ';
 const BASE_URL = 'https://www.googleapis.com/books/v1/volumes';
 
-const transformBookData = (item: any): Book => {
+const transformBookData = (item) => {
   const volumeInfo = item.volumeInfo || {};
   const saleInfo = item.saleInfo || {};
   
@@ -35,7 +33,7 @@ const transformBookData = (item: any): Book => {
   };
 };
 
-export const searchBooks = async (query: string, maxResults: number = 20): Promise<Book[]> => {
+export const searchBooks = async (query, maxResults = 20) => {
   try {
     const response = await fetch(
       `${BASE_URL}?q=${encodeURIComponent(query)}&key=${API_KEY}&maxResults=${maxResults}&printType=books`
@@ -58,11 +56,11 @@ export const searchBooks = async (query: string, maxResults: number = 20): Promi
   }
 };
 
-export const fetchBooks = async (category: string = 'fiction', maxResults: number = 20): Promise<Book[]> => {
+export const fetchBooks = async (category = 'fiction', maxResults = 20) => {
   return searchBooks(category, maxResults);
 };
 
-export const getBookById = async (id: string): Promise<Book | null> => {
+export const getBookById = async (id) => {
   try {
     const response = await fetch(`${BASE_URL}/${id}?key=${API_KEY}`);
     

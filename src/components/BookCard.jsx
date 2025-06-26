@@ -1,16 +1,9 @@
 
-import { Book } from '@/types/Book';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 
-interface BookCardProps {
-  book: Book;
-  onSelect: () => void;
-  onAddToCart: () => void;
-}
-
-export const BookCard = ({ book, onSelect, onAddToCart }: BookCardProps) => {
+export const BookCard = ({ book, onSelect, onAddToCart }) => {
   const getPrice = () => {
     if (book.saleInfo?.retailPrice) {
       return `$${book.saleInfo.retailPrice.amount.toFixed(2)}`;

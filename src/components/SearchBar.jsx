@@ -4,19 +4,15 @@ import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
-interface SearchBarProps {
-  onSearch: (query: string) => void;
-}
-
-export const SearchBar = ({ onSearch }: SearchBarProps) => {
+export const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     onSearch(query);
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       onSearch(query);
     }
